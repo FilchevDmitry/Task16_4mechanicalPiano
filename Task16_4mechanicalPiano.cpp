@@ -13,46 +13,37 @@ enum note
 };
 int main()
 {
-	string text;
-	string notes;
-	for (int i = 0; i < 12; i++)
+	const int SIZE = 12;
+	string notes[SIZE];
+	for (int i = 0; i < SIZE; i++)
 	{
 		cout << "Enter a chord of 3 notes(1-7) number " << (i + 1) << " : ";
-		cin >> text;
-		notes += text;
+		cin >> notes[i];
 	}
-	for (int i = 0; i < notes.length(); i++)
+	for (int i = 0; i < SIZE; i++)
 	{
-		int sound = stoi(string(1, notes[i]));
-		int notw = (1 << sound - 1);
-		if (notw & DO)
+		string n = notes[i];
+		int notw = 0;
+		for (int j = 0; j < n.length(); j++)
 		{
+			int sound = stoi(string(1, n[j]));
+			notw |= (1 << sound - 1);
+		}
+		if (notw & DO)	
 			cout << "DO ";
-		}
-		if (notw & RE)
-		{
+		if (notw & RE)	
 			cout << "RE ";
-		}
-		if (notw & MI)
-		{
+		if (notw & MI)	
 			cout << "MI ";
-		}
 		if (notw & FA)
-		{
 			cout << "FA ";
-		}
 		if (notw & SOL)
-		{
 			cout << "SOL ";
-		}
 		if (notw & LA)
-		{
 			cout << "LA ";
-		}
 		if (notw & SI)
-		{
 			cout << "SI ";
-		}
+		cout << endl;
 	}
 }
 
