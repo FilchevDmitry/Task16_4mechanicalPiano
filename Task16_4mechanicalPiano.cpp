@@ -29,6 +29,7 @@ int main()
 			int sound = stoi(string(1, n[j]));
 			notw |= (1 << sound - 1);
 		}
+
 		if (notw & DO)	
 			cout << "DO ";
 		if (notw & RE)	
